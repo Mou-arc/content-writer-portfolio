@@ -1,0 +1,499 @@
+/* --- Global Styles & Colors --- */
+:root {
+    --dark-bg: #1B263B; /* Slightly lighter navy for more depth */
+    --darker-bg: #0F1626; /* Deepest blue */
+    --light-bg-alt: #b8a9b7; /* Light gray for alternating sections */
+    --light-text: #eaeaea;
+    --dark-text: #333333; /* For text on light backgrounds */
+    --accent: #6C757D; /* Muted gray/blue for accent */
+    --secondary-accent: #101010; /* Lighter accent */
+    --glow-color: #6C757D; /* Color for interactive glow */
+
+    --font-primary: 'Playfair Display', serif;
+    --font-secondary: 'Roboto', sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; } /* Smooth scrolling for navigation */
+
+body {
+    background-color: var(--dark-bg);
+    color: var(--light-text);
+    font-family: var(--font-secondary);
+    line-height: 1.8; /* Increased line height for readability */
+}
+
+/* --- Header & Navigation --- */
+header {
+    background-color: rgb(228, 27, 164)/*var(--darker-bg)*/;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 1rem 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem; /* Increased gap */
+}
+
+nav a {
+    color: var(--light-text);
+    text-decoration: none;
+    font-family: var(--font-primary);
+    font-size: 1.15rem; /* Slightly larger */
+    transition: color 0.3s ease-in-out, transform 0.2s ease-out;
+}
+
+nav a:hover {
+    color: var(--secondary-accent);
+    transform: translateY(-3px); /* Subtle lift on hover */
+}
+
+/* --- Content Sections --- */
+main { max-width: 1200px; /* Wider main content area */
+    margin: 0 auto;
+    padding: 0; /* Remove horizontal padding here, sections will manage */
+}
+
+.content-section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 40px; /* More generous padding */
+    position: relative;
+    overflow: hidden; /* For background effects */
+}
+
+.alternate-bg {
+    background-color: var(--light-bg-alt);
+    color: var(--dark-text); /* Dark text on light background */
+}
+
+h2 {
+    font-family: var(--font-primary);
+    font-size: 3.5rem; /* Larger headings */
+    color: rgb(239, 180, 190)/*var(--accent)*/;
+    margin-bottom: 3rem;
+    text-align: center;
+    position: relative;
+    letter-spacing: 2px;
+}
+
+.alternate-bg h2 {
+    color: var(--darker-bg); /* Darker heading on light background */
+}
+
+.section-content {
+    max-width: 900px; /* Wider content for readability */
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+/* --- About Me / Hero Section Specifics --- */
+#about-me {
+    background: rgba(109, 109, 103, 0.533)/*linear-gradient(135deg, var(--darker-bg) 0%, var(--dark-bg) 100%)*/;
+    background-size: cover;
+    background-position: center;
+    color: var(--light-text);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    min-height: 90vh; /* Shorter hero */
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5rem;
+}
+
+.profile-card {
+    background-color: rgba(42, 147, 245, 0.95); /* Semi-transparent background */
+    backdrop-filter: blur(10px); /* Blur effect */
+    border-radius: 15px;
+    padding: 2.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    width: 100%;
+    max-width: 450px;
+    border: 1px solid rgba(255,255,255,0.1);
+    position: relative;
+}
+
+.profile-picture-container {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 1.5rem auto;
+    border: 2px solid var(--secondary-accent); /* Border around photo */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+}
+
+.profile-picture-container:hover {
+    transform: scale(1.05) rotate(2deg); /* Interactive effect on hover */
+}
+
+.profile-picture {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    object-position: center top;
+}
+
+.profile-card h2 {
+    font-size: 2.8rem;
+    color: var(--secondary-accent);
+    margin-bottom: 0.5rem;
+    text-shadow: none; /* Remove section shadow from inner h2 */
+}
+
+.profile-card .tagline {
+    font-family: var(--font-primary);
+    font-size: 1.3rem;
+    color: var(--secondary-accent);
+    margin-bottom: 1.5rem;
+}
+
+.about-text {
+    font-size: 1.2rem;
+    max-width: 700px;
+}
+
+/* --- Styles of Content Grid --- */
+.styles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.style-item {
+    background-color: var(--dark-bg);
+    color: var(--light-text);
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+.alternate-bg .style-item {
+    background-color: #dad3d8; /* Lighter background for cards */
+    color: var(--dark-text);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.style-item:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+}
+
+.icon-large {
+    font-size: 3rem;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    transition: color 0.3s ease;
+}
+
+.style-item:hover .icon-large {
+    color: var(--secondary-accent);
+}
+
+/* --- My Uniqueness Highlight --- */
+.highlight-text {
+    font-family: var(--font-primary);
+    font-size: 1.8rem;
+    font-style: italic;
+    color: rgba(235, 235, 244, 0.95)/*var(--secondary-accent)*/;
+    margin-top: 3rem;
+    padding: 1rem 2rem;
+    border-left: 5px solid rgba(42, 147, 245, 0.95)/*var(--accent)*/;
+    background-color: rgba(122, 122, 239, 0.7);
+    border-radius: 8px;
+    display: inline-block;
+    max-width: 700px;
+}
+
+/* --- Sample Work Cards (from previous code, but now generated) --- */
+.work-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Slightly smaller min width */
+    gap: 2.5rem; /* Increased gap */
+    padding: 3rem 0;
+}
+
+.work-card { /* Styles remain largely the same, but now generated */
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.work-card:hover { transform: scale(1.04); /* More pronounced zoom */
+    box-shadow: 0 8px 30px rgba(18, 18, 18, 0.6);
+}
+
+.work-card img {
+    width: 100%;
+    height: 250px; /* Fixed height for thumbnails */
+    object-fit: cover; /* Ensures images cover the area without distortion */
+    display: block;
+    transition: transform 0.3s ease-in-out;
+}
+
+.work-card:hover img { transform: scale(1.3); /* Image zooms more */ }
+
+.card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(233, 143, 230, 0.955); /* Slightly darker overlay */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.6s ease-in-out;
+    text-align: center;
+    padding: 1.5rem;
+}
+
+.work-card:hover .card-overlay { opacity: 1; }
+
+.card-overlay h3 { font-size: 1.6rem; color: var(--secondary-accent); margin-bottom: 0.5rem;}
+.card-overlay p { font-size: 1.05rem; color: var(--light-text); }
+
+
+/* --- Contact Details Styling --- */
+.contact-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 2.5rem;
+    border-radius: 12px;
+    background-color: rgba(122, 122, 239, 0.7);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 10px 30px rgba(67, 68, 75, 0.459);
+    border: 1px solid rgba(75, 75, 115, 0.7);
+    max-width: 650px;
+    margin: 2rem auto;
+}
+
+.contact-details p {
+    font-size: 1.15rem;
+    text-align: center;
+}
+
+.contact-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.contact-link {
+    display: inline-block;
+    background-color: rgba(42, 147, 245, 0.95)/*var(--accent)*/;
+    color: var(--light-text);
+    text-decoration: none;
+    font-size: 1.1rem;
+    padding: 0.8rem 1.8rem;
+    border-radius: 8px;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-out;
+    border: 2px solid transparent;
+}
+
+.contact-link:hover {
+    background-color: var(--secondary-accent);
+    transform: translateY(-3px);
+    border-color: var(--light-text);
+}
+
+.contact-link i {
+    margin-right: 0.5rem;
+}
+
+/* --- Modal --- */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1001;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.95); /* Slightly darker overlay */
+    backdrop-filter: blur(12px); /* More blur */
+}
+
+.modal-content {
+    background-color: rgb(242, 226, 226)/*var(--darker-bg)*/;
+    margin: 3% auto; /* Move slightly higher */
+    padding: 3.5rem; /* More padding */
+    border: 2px solid var(--accent);
+    width: 95%;
+    max-width: 1000px; /* Wider modal */
+    border-radius: 15px; /* Softer corners */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+}
+
+.close-button {
+    color: #eaeaea/*var(--secondary-accent)*/;
+    font-size: 3rem; /* Larger close button */
+    font-weight: bold;
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    cursor: pointer;
+    transition: color 0.3s ease-in-out, transform 0.2s ease-out;
+}
+
+.close-button:hover {
+    color: var(--light-text);
+    transform: rotate(90deg); /* Spin effect on close button */
+}
+
+.modal-body-inner {
+    text-align: left; /* Align modal content to left */
+    max-height: 80vh; /* Max height to allow scrolling */
+    overflow-y: auto; /* Enable scroll if content overflows */
+    padding-right: 15px; /* Padding for scrollbar */
+}
+
+.modal-body-inner::-webkit-scrollbar {
+    width: 8px;
+}
+.modal-body-inner::-webkit-scrollbar-track {
+    background: var(--dark-bg);
+    border-radius: 10px;
+}
+.modal-body-inner::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 10px;
+}
+.modal-body-inner::-webkit-scrollbar-thumb:hover {
+    background: var(--light-bg-alt);
+}
+
+.modal-body-inner h3 {
+    font-family: var(--font-primary);
+    font-size: 2.8rem;
+    color: var(--secondary-accent);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.project-description {
+    font-size: 1.15rem;
+    color: var(--dark-bg);
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.work-content {
+    font-size: 1.05rem;
+    line-height: 1.9;
+    color: var(--secondary-accent);
+}
+
+.work-content h1, .work-content h2, .work-content h3, .work-content h4, .work-content h5, .work-content h6 {
+    font-family: var(--font-primary);
+    color: var(--accent);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.work-content p {
+    margin-bottom: 1.2rem;
+}
+
+.work-content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 1.5rem auto;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* --- Interactive Elements & Animations --- */
+.interactive-glow {
+    position: relative;
+    overflow: hidden;
+    transition: box-shadow 0.4s ease-in-out;
+}
+
+.interactive-glow::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, var(--glow-color) 0%, transparent 70%);
+    opacity: 0;
+    transform: scale(0);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    z-index: -1;
+}
+
+.interactive-glow:hover::before {
+    opacity: 0.1;
+    transform: scale(1);
+}
+
+.interactive-float {
+    animation: floatAnimation 3s ease-in-out infinite;
+}
+
+@keyframes floatAnimation {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0px); }
+}
+
+/* --- Responsiveness --- */
+@media (max-width: 900px) {
+    h2 { font-size: 2.8rem; }
+    .content-section { padding: 60px 20px; }
+    .hero-content { flex-direction: column; gap: 2rem; }
+    .profile-card { max-width: 90%; }
+    .profile-card h2 { font-size: 2.2rem; }
+    .profile-card .tagline { font-size: 1.1rem; }
+    .about-text { font-size: 1rem; }
+    .styles-grid { grid-template-columns: 1fr; }
+    .work-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+    .modal-content { max-width: 95%; margin: 2% auto; padding: 2rem; }
+    .close-button { font-size: 2.5rem; right: 20px; top: 10px; }
+}
+
+@media (max-width: 600px) {
+    nav ul { flex-direction: column; gap: 0.8rem; }
+    nav a { font-size: 1rem; padding: 0.3rem 1rem; }
+    h2 { font-size: 2rem; }
+    .content-section { padding: 40px 15px; }
+    .profile-picture-container { width: 120px; height: 120px; }
+    .profile-card h2 { font-size: 1.8rem; }
+    .profile-card .tagline { font-size: 1rem; }
+    .highlight-text { font-size: 1.4rem; padding: 0.8rem 1.5rem; }
+    .work-grid { grid-template-columns: 1fr; }
+    .modal-content h3 { font-size: 2rem; }
+}
